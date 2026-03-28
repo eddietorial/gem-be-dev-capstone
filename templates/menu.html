@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Little Lemon</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Georgia, serif; background: #fdfaf4; color: #333; }
+        nav {
+            background: #495e57; padding: 1rem 2rem;
+            display: flex; align-items: center; gap: 2rem;
+        }
+        nav a { color: #f4ce14; text-decoration: none; font-weight: bold; }
+        nav .brand { font-size: 1.4rem; margin-right: auto; }
+        .page-header {
+            background: #495e57; color: #fff;
+            padding: 2.5rem 2rem; text-align: center;
+        }
+        .page-header h1 { font-size: 2.5rem; color: #f4ce14; }
+        .page-header p  { color: #edefee; margin-top: 0.4rem; }
+        .menu-section { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
+        table {
+            width: 100%; border-collapse: collapse;
+            background: #fff; border-radius: 10px; overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+        thead { background: #495e57; color: #f4ce14; }
+        th, td { padding: 0.9rem 1.2rem; text-align: left; }
+        tbody tr:nth-child(even) { background: #f7f3ea; }
+        footer {
+            background: #333; color: #edefee;
+            text-align: center; padding: 1.5rem;
+            font-size: 0.85rem; margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/restaurant/" class="brand">Little Lemon</a>
+    <a href="/restaurant/menu/">Menu</a>
+    <a href="/restaurant/book/">Book a Table</a>
+</nav>
+
+<div class="page-header">
+    <h1>Our Menu</h1>
+    <p>Fresh Mediterranean dishes, made with love every day.</p>
+</div>
+
+<section class="menu-section">
+    {% if menu_items %}
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Price</th>
+                <th>Inventory</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in menu_items %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>${{ item.price }}</td>
+                <td>{{ item.inventory }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p style="text-align:center;padding:2rem;color:#666;">
+            The menu is being updated. Please check back soon.
+        </p>
+    {% endif %}
+</section>
+
+<footer>
+    <p>Little Lemon Restaurant &copy; 2026 | Geoffrey Edmund Moraes</p>
+</footer>
+
+</body>
+</html>
