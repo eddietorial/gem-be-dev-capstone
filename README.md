@@ -1,7 +1,9 @@
 # Little Lemon Restaurant - Back-End Developer Capstone
 
 **Author:** Geoffrey Edmund Moraes
+
 **GitHub:** https://github.com/eddietorial/gem-be-dev-capstone
+
 **Course:** Meta Back-End Developer Capstone (Coursera)
 
 ---
